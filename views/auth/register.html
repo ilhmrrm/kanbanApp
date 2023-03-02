@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <!-- <meta charset="utf-8"> -->
+      {{template "general/header"}}
+</head>
+<body>
+    <div class="container 
+                mx-auto 
+                h-screen flex 
+                justify-center 
+                items-center">
+        <div class="w-full 
+                    md:w-3/4 
+                    lg:w-1/2">
+            <div class="mb-4">
+                <h1 class="block 
+                          font-bold
+                          text-gray-700 
+                          text-sm 
+                          text-center
+                          font-bold 
+                          mb-2">Register</h1>
+
+              <div class="mb-4">
+                  <form method="post" 
+                        class="bg-white 
+                                rounded 
+                                shadow-md 
+                                px-8 pt-6 pb-8 mb-4" 
+                        action="/register/process">
+
+                          <div class="mb-4">
+                            <label for="fullname" class="block text-gray-700 text-sm font-bold mb-2">
+                              Fullname
+                            </label>
+
+                            <input type="text" placeholder="Fullname" name="fullname" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                          </div>
+                          <div class="mb-4">
+                              <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+  
+                              <input type="text" placeholder="Email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                          </div>
+                  
+                          <div class="mb-6">
+                              <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+  
+                              <input type="password" placeholder="Password" name="password" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" title="" required>
+                          </div>
+
+                      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Register</button>
+                  </form>
+                  <a href="/login" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">Login</a>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- TODO: answer here -->
+</body>
+</html>
