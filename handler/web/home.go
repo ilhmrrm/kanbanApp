@@ -23,7 +23,6 @@ func (h *homeWeb) Index(w http.ResponseWriter, r *http.Request) {
 	var filepath = path.Join("views", "main", "index.html")
 	var header = path.Join("views", "general", "header.html")
 
-	// var tmpl = template.Must(template.ParseFS(h.embed, filepath, header))
 	var tmpl = template.Must(template.ParseFiles(filepath, header))
 
 	err := tmpl.Execute(w, NewHomeWeb(h.embed))

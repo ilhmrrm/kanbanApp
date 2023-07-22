@@ -27,24 +27,16 @@ func NewAuthWeb(userClient client.UserClient, embed embed.FS) *authWeb {
 }
 
 func (a *authWeb) Login(w http.ResponseWriter, r *http.Request) {
-	// header := path.Join("views/general/header.html")
 	header := path.Join("views", "general", "header.html")
-	// templateLogin := path.Join("views/auth/login.html")
 	templateLogin := path.Join("views", "auth", "login.html")
 
-	// var tmpl, err = template.ParseFS(a.embed, templateLogin, header)
 	var tmpl = template.Must(template.ParseFiles(templateLogin, header))
-	// if err != nil {
-	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
-	// 	return
-	// }
 
 	err := tmpl.Execute(w, NewAuthWeb(a.userClient, a.embed))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	// TODO: answer here
 }
 
 func (a *authWeb) LoginProcess(w http.ResponseWriter, r *http.Request) {
@@ -73,16 +65,8 @@ func (a *authWeb) LoginProcess(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *authWeb) Register(w http.ResponseWriter, r *http.Request) {
-	// regis := path.Join("views/auth/register.html")
 	regis := path.Join("views", "auth", "register.html")
-	// header := path.Join("views/general/header.html")
 	header := path.Join("views", "general", "header.html")
-
-	// tmpl, err := template.ParseFS(a.embed, regis, header)
-	// if err != nil {
-	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
-	// 	return
-	// }
 
 	var tmpl = template.Must(template.ParseFiles(regis, header))
 
@@ -91,7 +75,6 @@ func (a *authWeb) Register(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	// TODO: answer here
 }
 
 func (a *authWeb) RegisterProcess(w http.ResponseWriter, r *http.Request) {
@@ -126,6 +109,5 @@ func (a *authWeb) Logout(w http.ResponseWriter, r *http.Request) {
 		Value: "",
 	})
 
-	http.Redirect(w, r, "/login", http.StatusSeeOther)
-	// TODO: answer here
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }

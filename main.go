@@ -36,7 +36,8 @@ type ClientHandler struct {
 var Resources embed.FS
 
 func main() {
-	os.Setenv("DATABASE_URL", "postgres://postgres:123@localhost:5432/kanban_app")
+	// os.Setenv("DATABASE_URL", "postgres://postgres:123@localhost:5432/kanban_app")
+	os.Setenv("DATABASE_URL", "root:@tcp(127.0.0.1:3306)/kanbanApp?charset=utf8mb4&parseTime=True&loc=Local")
 
 	wg := sync.WaitGroup{}
 

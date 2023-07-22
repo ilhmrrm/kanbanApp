@@ -23,33 +23,6 @@ func NewDashboardWeb(catClient client.CategoryClient, embed embed.FS) *dashboard
 }
 
 func (d *dashboardWeb) Dashboard(w http.ResponseWriter, r *http.Request) {
-	/*userId := r.Context().Value("id")
-
-	categories, err := d.categoryClient.GetCategories(userId.(string))
-	if err != nil {
-		log.Println("error get cat: ", err.Error())
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	var dataTemplate = map[string]interface{}{
-		"categories": categories,
-	}
-
-	var funcMap = template.FuncMap{
-		"categoryInc": func(catId int) int {
-			return catId + 1
-		},
-		"categoryDec": func(catId int) int {
-			return catId - 1
-		},
-	}
-
-	// ignore this
-	_ = dataTemplate
-	_ = funcMap
-	//
-	*/
 
 	userId := r.Context().Value("id")
 
@@ -100,14 +73,9 @@ func (d *dashboardWeb) Dashboard(w http.ResponseWriter, r *http.Request) {
 	_ = funcMap
 	//
 
-	// TODO: answer here
 	dashboard := path.Join("views/main/dashboard.html")
 	header := path.Join("views/general/header.html")
 
-	// tmpl := template.Must(template.ParseFS(d.embed, dashboard, header)).Funcs(funcMap)
-
-	// tmpl := template.Must(template.New("dashboard.html").Funcs(funcMap).ParseFS(d.embed, dashboard, header))
-	// tmpl, err := template.New("dashboard.html").Funcs(funcMap).ParseFS(d.embed, dashboard, header)
 	tmpl, err := template.New("dashboard.html").Funcs(funcMap).ParseFiles(dashboard, header)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

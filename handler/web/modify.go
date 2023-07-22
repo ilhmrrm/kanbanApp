@@ -38,11 +38,9 @@ func (a *modifyWeb) AddTask(w http.ResponseWriter, r *http.Request) {
 	_ = catId
 	//
 
-	// TODO: answer here
 	addTask := path.Join("views/main/add-task.html")
 	header := path.Join("views/general/header.html")
 
-	// tmpl, err := template.ParseFS(a.embed, addTask, header)
 	tmpl, err := template.New("add-task.html").ParseFiles(addTask, header)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -73,7 +71,6 @@ func (a *modifyWeb) AddTaskProcess(w http.ResponseWriter, r *http.Request) {
 	_ = respCode
 	//
 
-	// TODO: answer here
 	/* Jika response code adalah 201 maka method ini akan mengarahkan
 	kembali ke halaman dashboard (/dashboard) dengan menggunakan http.Redirect*/
 	if respCode == 201 {
@@ -93,7 +90,6 @@ func (a *modifyWeb) AddCategory(w http.ResponseWriter, r *http.Request) {
 	categoryAdd := path.Join("views/main/add-category.html")
 	header := path.Join("views/general/header.html")
 
-	// tmpl, err := template.ParseFS(a.embed, categoryAdd, header)
 	tmpl, err := template.New("add-category.html").ParseFiles(categoryAdd, header)
 
 	if err != nil {
@@ -107,7 +103,6 @@ func (a *modifyWeb) AddCategory(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// TODO: answer here
 }
 
 func (a *modifyWeb) AddCategoryProcess(w http.ResponseWriter, r *http.Request) {
@@ -125,7 +120,6 @@ func (a *modifyWeb) AddCategoryProcess(w http.ResponseWriter, r *http.Request) {
 	_ = respCode
 	//
 
-	// TODO: answer here
 	if respCode == 201 {
 		http.Redirect(w, r, "/dashboard", http.StatusSeeOther)
 	} else {
@@ -147,11 +141,9 @@ func (a *modifyWeb) UpdateTask(w http.ResponseWriter, r *http.Request) {
 	_ = task
 	//
 
-	// TODO: answer here
 	header := path.Join("views/general/header.html")
 	updateTask := path.Join("views/main/update-task.html")
 
-	// tmpl, err := template.ParseFS(a.embed, updateTask, header)
 	tmpl, err := template.New("update-task.html").ParseFiles(updateTask, header)
 
 	if err != nil {
@@ -207,7 +199,6 @@ func (a *modifyWeb) DeleteTask(w http.ResponseWriter, r *http.Request) {
 	} else {
 		http.Redirect(w, r, "/dashboard", http.StatusSeeOther)
 	}
-	// TODO: answer here
 }
 
 func (a *modifyWeb) DeleteCategory(w http.ResponseWriter, r *http.Request) {
@@ -220,6 +211,4 @@ func (a *modifyWeb) DeleteCategory(w http.ResponseWriter, r *http.Request) {
 	} else {
 		http.Redirect(w, r, "/dashboard", http.StatusSeeOther)
 	}
-
-	// TODO: answer here
 }

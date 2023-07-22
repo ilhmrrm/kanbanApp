@@ -51,7 +51,7 @@ func (u *userAPI) Login(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
-		json.NewEncoder(w).Encode(entity.ErrorResponse{Error: "error internal server"})
+		json.NewEncoder(w).Encode(entity.ErrorResponse{Error: "Username atau Password Salah"})
 		return
 	}
 
